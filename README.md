@@ -1,16 +1,37 @@
-# Project3Context-Aware-Corporate-Chatbot-Engine
-# Development & Setup Guide
+# 🏢 Company Knowledge Assistant (Semantic RAG Chatbot)
 
-This guide provides detailed instructions to replicate the environment, set up local dependencies, and understand the internal repository layout for the **Enterprise RAG: Domain-Specific AI Assistant** project.
+**Student Name:** Haseeb Bilal  
+**Registration No:** 04102213015  
+
+An interactive Retrieval-Augmented Generation (RAG) chatbot built to query internal company policies semantically. This project is optimized to run completely locally or within resource-constrained environments (like Kaggle) by utilizing open-source text embeddings and an efficient local vector database, bypassing reliance on active external LLM API quotas.
 
 ---
 
-## 📂 Project Directory Structure
+## 🚀 Features
 
-When deployed locally or within an environment, the workspace maintains the following structural layout:
+* **Semantic Search vs. Keyword Search:** Utilizes deep-learning embeddings to understand query intent rather than basic keyword matching (e.g., matching "PTO rules" to "Vacation Policy").
+* **Zero-Cost Embedding Layer:** Uses the open-source `all-MiniLM-L6-v2` transformer model generating 384-dimensional dense vectors locally.
+* **Persistent Vector DB:** Powered by **ChromaDB** to index, store, and query document chunks efficiently.
+* **Interactive UI:** A sleek, conversational chat interface built using **Streamlit** featuring real-time document search tracking and chat history metrics.
+* **Production Workaround/Fallback:** Features a smart fail-safe mechanism that instantly delivers exact context matches cleanly if external LLM generation is blocked by API limits or network constraints.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend UI:** Streamlit
+* **Orchestration & Loading:** LangChain & LangChain-Community
+* **Vector Database:** ChromaDB (Persistent Storage)
+* **Embedding Model:** Hug Face `sentence-transformers/all-MiniLM-L6-v2`
+* **Tunneling/Deployment:** Serveo / Localtunnel (for cloud execution access)
+
+---
+
+## 📁 Project Structure
 
 ```text
-├── company_docs/               # Local repository for raw data assets
-│   └── hr_policy.txt           # Target policy text document for RAG input
-├── DEVELOPMENT.md              # Environment setup and configuration details
-└── README.md                   # Core project overview and execution flow
+├── company_docs/          # Raw policy text documents (Vacation, WFH, Maternity)
+├── chromadb/              # Persistent vector store binary directory
+├── app.py                 # Streamlit web application source code
+├── project3-rag-llm-chatbot-ipynb.ipynb # Step-by-step development notebook
+└── README.md              # Project documentation
